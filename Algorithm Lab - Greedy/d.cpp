@@ -5,6 +5,13 @@ using namespace std;
 double pi = 3.141592653589793238462643383279;
 
 void solve() {
+    int s, x, k = 0;
+    cin >> s >> x;
+    while (s != 0) {
+        s /= x;
+        k++;
+    }
+    cout << k << endl;
 }
 
 signed main() {
