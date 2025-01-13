@@ -5,29 +5,31 @@ using namespace std;
 double pi = 3.141592653589793238462643383279;
 
 void solve() {
-    int n, d, r;
-    while (cin >> n >> d >> r && (n != 0 || d != 0 || r != 0)) {
-        vector<int> mrn(n), eve(n);
-        for (int i = 0; i < n; i++) cin >> mrn[i];
-        for (int i = 0; i < n; i++) cin >> eve[i];
-        sort(mrn.begin(), mrn.end());
-        sort(eve.rbegin(), eve.rend());
-        int i = 0, j = 0;
-        vector<int> v;
-        while (i < n && j < n) {
-            while (mrn[i] + eve[j] > d) {
-                j++;
-                v.push_back(eve[j]);
-                if (j > n) break;
-            }
-            if (mrn[i] + eve[j] <= d) {
-                i++;
-                j++;
-            }
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+        sum += v[i];
+    }
+    int half = (sum / 2) + 1;
+    // cout << half << endl;
+    int alice = v[0], prty = v[0];
+    vector<int> ans;
+    ans.push_back(1);
+    for (int i = 1; i < n; i++) {
+        if (v[i] * 2 <= alice) {
+            prty += v[i];
+            ans.push_back(i + 1);
         }
-        int cnt = 0;
-        for (int a = i; a < n; a++) {
-        }
+    }
+    if (prty >= half) {
+        cout << ans.size() << endl;
+        for (int i = 0; i < ans.size(); i++) cout << ans[i] << " ";
+        cout << endl;
+    } else {
+        cout << 0 << endl;
     }
 }
 
