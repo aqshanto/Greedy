@@ -12,22 +12,14 @@ void solve() {
         for (int i = 0; i < n; i++) cin >> eve[i];
         sort(mrn.begin(), mrn.end());
         sort(eve.rbegin(), eve.rend());
-        int i = 0, j = 0;
-        vector<int> v;
-        while (i < n && j < n) {
-            while (mrn[i] + eve[j] > d) {
-                j++;
-                v.push_back(eve[j]);
-                if (j > n) break;
-            }
-            if (mrn[i] + eve[j] <= d) {
-                i++;
-                j++;
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            int t = mrn[i] + eve[i];
+            if (t > d) {
+                ans += (t - d) * r;
             }
         }
-        int cnt = 0;
-        for (int a = i; a < n; a++) {
-        }
+        cout << ans << endl;
     }
 }
 
